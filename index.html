@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>El Arte de Crear · Dr. Films</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      overflow-x: hidden;
+    }
+    body { line-height: 0; }
+    main {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+    }
+    img, video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      object-fit: contain;
+      background: #000;
+    }
+    video {
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+    }
+    @media (min-width: 700px) {
+      main { max-width: 620px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="assets/01-portada.jpg" alt="" fetchpriority="high">
+    <img src="assets/02-personalizado.jpg" alt="" loading="lazy">
+    <video autoplay muted loop playsinline webkit-playsinline preload="metadata">
+      <source src="assets/03-video.mp4" type="video/mp4">
+    </video>
+    <img src="assets/04-acompanamiento.jpg" alt="" loading="lazy">
+    <video autoplay muted loop playsinline webkit-playsinline preload="metadata">
+      <source src="assets/05-video.mp4" type="video/mp4">
+    </video>
+    <img src="assets/06-inversion.jpg" alt="" loading="lazy">
+    <img src="assets/07-cierre.jpg" alt="" loading="lazy">
+  </main>
+  <script>
+    // Reintenta la reproducción cuando el navegador móvil la difiere por ahorro de energía.
+    document.querySelectorAll("video").forEach((video) => {
+      const play = () => video.play().catch(() => {});
+      video.addEventListener("canplay", play, { once: true });
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) play();
+      });
+      play();
+    });
+  </script>
+</body>
+</html>
